@@ -11,11 +11,10 @@ namespace EventMakerOpgave.ViewModel
     class EventViewModel
     {
         private ObservableCollection<Event> eventCollection;
-
         public ObservableCollection<Event> EventCollection
         {
-            get { return EventCollection; }
-            set { EventCollection = value; }
+            get { return eventCollection; }
+            set { eventCollection = value; }
         }
 
 
@@ -24,6 +23,7 @@ namespace EventMakerOpgave.ViewModel
 
         public EventViewModel()
         {
+            EventCollection = new ObservableCollection<Event>();
             EventCollection = EventCatalogSingleton.Instance.EventCollection;    
 
         }

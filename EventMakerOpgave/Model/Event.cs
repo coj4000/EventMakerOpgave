@@ -26,7 +26,7 @@ namespace EventMakerOpgave.Model
 
         public override string ToString()
         {
-            return base.ToString();
+            return $"{ID} - {Name} - {Description} - {Place} - {DateTime}";
         }
 
     }

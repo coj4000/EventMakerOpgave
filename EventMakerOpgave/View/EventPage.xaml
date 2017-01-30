@@ -1,20 +1,19 @@
 ﻿<Page
-    x:Class="EventMakerOpgave.EventPage"
+    x:Class="EventMakerOpgave.View.EventPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:EventMakerOpgave"
+    xmlns:local="using:EventMakerOpgave.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:EventMakerOpgave.ViewModel"
     mc:Ignorable="d">
-
     <Page.DataContext>
-        <vm:EventViewModel/>
+        <vm:EventViewModel />
     </Page.DataContext>
-
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
         
-        
+        <ListView Name="eventList" ItemsSource="{Binding EventCollection, Mode=TwoWay}" Height="400" Width="300" BorderBrush="Black" BorderThickness="2"/>
+    
     </Grid>
 </Page>
