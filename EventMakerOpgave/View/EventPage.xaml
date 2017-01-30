@@ -5,9 +5,16 @@
     xmlns:local="using:EventMakerOpgave"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:EventMakerOpgave.ViewModel"
     mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:EventViewModel/>
+    </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        
+        
     </Grid>
 </Page>

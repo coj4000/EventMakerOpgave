@@ -18,8 +18,13 @@ namespace EventMakerOpgave.ViewModel
             set { EventCollection = value; }
         }
 
+
+
+
+
         public EventViewModel()
         {
+            EventCollection = EventCatalogSingleton.Instance.EventCollection;    
 
         }
 

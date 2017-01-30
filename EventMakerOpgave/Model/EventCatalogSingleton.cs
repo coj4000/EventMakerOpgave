@@ -23,6 +23,7 @@ namespace EventMakerOpgave.Model
 
         private EventCatalogSingleton()
         {
+            ObservableCollection<Event> EventCollection = new ObservableCollection<Event>();
             EventCollection.Add(new Event(1, "Event 1", "Den første event i verdenshistorien", "Ønskeøen", DateTime.Now));
         }
 
