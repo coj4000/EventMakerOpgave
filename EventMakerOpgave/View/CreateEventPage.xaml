@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:EventMakerOpgave.ViewModel"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d">
 
     <Page.DataContext>
@@ -13,8 +14,22 @@
     </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        
-        
-        
+        <AppBarButton Command="{Binding CreateEventCommand}" x:Name="appBarButton" HorizontalAlignment="Left" Icon="Accept" Label="Create" Margin="282,558,0,0" VerticalAlignment="Top" />
+
+        <AppBarButton x:Name="goBack" HorizontalAlignment="Left" Icon="Back" Label="Back" Margin="0,558,0,0" VerticalAlignment="Top">
+
+
+
+            <Interactivity:Interaction.Behaviors>
+                <Core:EventTriggerBehavior EventName="Click">
+                    <Core:NavigateToPageAction/>
+                    <Core:NavigateToPageAction TargetPage="EventMakerOpgave.View.EventPage"/>
+                </Core:EventTriggerBehavior>
+            </Interactivity:Interaction.Behaviors>
+
+        </AppBarButton>
+
+
+
     </Grid>
 </Page>
