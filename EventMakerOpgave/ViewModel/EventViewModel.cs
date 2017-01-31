@@ -5,11 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EventMakerOpgave.Model;
+using System.Windows.Input;
+using EventMakerOpgave.Common;
 
 namespace EventMakerOpgave.ViewModel
 {
     class EventViewModel
     {
+        //Handler
+        public Handler.EventHandler EventHandler { get; set; }
+
+        //ICommand props
+        public ICommand CreateEventCommand { get; set; }
+
+        //Props
         private ObservableCollection<Event> eventCollection;
         public ObservableCollection<Event> EventCollection
         {
@@ -65,9 +74,13 @@ namespace EventMakerOpgave.ViewModel
             EventCollection = new ObservableCollection<Event>();
             EventCollection = EventCatalogSingleton.Instance.EventCollection;
 
+            EventHandler = new Handler.EventHandler(this);
+
             DateTime dt = System.DateTime.Now; 
             date = new DateTimeOffset(dt.Year, dt.Month, dt.Day, 0, 0, 0, 0, new TimeSpan());
             time = new TimeSpan(dt.Hour, dt.Minute, dt.Second);
+
+            CreateEventCommand = new RelayCommand(EventHandler.CreateEvent, null);
 
         }
 
