@@ -7,16 +7,18 @@ using System.Threading.Tasks;
 using EventMakerOpgave.Model;
 using System.Windows.Input;
 using EventMakerOpgave.Common;
+using System.ComponentModel;
 
 namespace EventMakerOpgave.ViewModel
 {
-    class EventViewModel
+    class EventViewModel : INotifyPropertyChanged
     {
         //Handler
         public Handler.EventHandler EventHandler { get; set; }
 
         //ICommand props
         public ICommand CreateEventCommand { get; set; }
+        public ICommand DeleteEventCommand { get; set; }
 
         //Props
         private ObservableCollection<Event> eventCollection;
@@ -30,28 +32,36 @@ namespace EventMakerOpgave.ViewModel
         public int Id
         {
             get { return id; }
-            set { id = value; }
+            set { id = value;
+                OnPropertyChanged(nameof(Id));
+            }
         }
 
         private string name;
         public string Name
         {
             get { return name; }
-            set { name = value; }
+            set { name = value;
+                OnPropertyChanged(nameof(Name));
+            }
         }
 
         private string description;
         public string Description
         {
             get { return description; }
-            set { description = value; }
+            set { description = value;
+                OnPropertyChanged(nameof(Description));
+            }
         }
 
         private string place;
         public string Place
         {
             get { return place; }
-            set { place = value; }
+            set { place = value;
+                OnPropertyChanged(nameof(Place));
+            }
         }
 
         private DateTimeOffset date;
@@ -68,6 +78,16 @@ namespace EventMakerOpgave.ViewModel
             set { time = value; }
         }
 
+        private Event selectedEvent;
+
+        public Event SelectedEvent
+        {
+            get { return selectedEvent; }
+            set { selectedEvent = value;
+                OnPropertyChanged(nameof(SelectedEvent));
+            }
+        }
+
 
         public EventViewModel()
         {
@@ -81,9 +101,16 @@ namespace EventMakerOpgave.ViewModel
             time = new TimeSpan(dt.Hour, dt.Minute, dt.Second);
 
             CreateEventCommand = new RelayCommand(EventHandler.CreateEvent, null);
+            DeleteEventCommand = new RelayCommand(EventHandler.DeleteEvent, EventHandler.CanDeleteEvent);
 
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
     }
 }

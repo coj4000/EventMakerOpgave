@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EventMakerOpgave.ViewModel;
 using EventMakerOpgave.Model;
 using EventMakerOpgave.Converter;
+using EventMakerOpgave.Persistency;
 
 namespace EventMakerOpgave.Handler
 {
@@ -22,7 +23,19 @@ namespace EventMakerOpgave.Handler
 
         public void CreateEvent()
         {
-            EventCatalogSingleton.Instance.AddEvent(new Event(EventViewModel.Id, EventViewModel.Name, EventViewModel.Description, EventViewModel.Place, DateTimeConverter.DateTimeOffsetAndTimeSetToDateTime(EventViewModel.Date, EventViewModel.Time)));
+            Event tempEvent = new Event(EventViewModel.Id, EventViewModel.Name, EventViewModel.Description, EventViewModel.Place, DateTimeConverter.DateTimeOffsetAndTimeSetToDateTime(EventViewModel.Date, EventViewModel.Time));
+
+            EventCatalogSingleton.Instance.AddEvent(tempEvent);
+        }
+
+        public void DeleteEvent()
+        {
+            EventCatalogSingleton.Instance.RemoveEvent(EventViewModel.SelectedEvent);
+        }
+
+        public bool CanDeleteEvent()
+        {
+            return EventCatalogSingleton.Instance.EventCollection.Count > 0;
         }
 
     }

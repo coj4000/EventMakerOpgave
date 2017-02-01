@@ -7,15 +7,51 @@
     xmlns:vm="using:EventMakerOpgave.ViewModel"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     x:Class="EventMakerOpgave.View.EventPage"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    
+    >
     <Page.DataContext>
         <vm:EventViewModel />
     </Page.DataContext>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,-526,0">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <ListView x:Name="eventList" ItemsSource="{Binding EventCollection, Mode=TwoWay}" Height="400" Width="300" BorderBrush="Black" BorderThickness="2" Margin="48,49,538,191"/>
-        <AppBarButton x:Name="appBarButton" HorizontalAlignment="Left" Icon="Add" Label="Add Event" Margin="48,517,0,0" VerticalAlignment="Top">
+        <ListView ItemsSource="{Binding EventCollection}" SelectedItem="{Binding SelectedEvent, Mode=TwoWay}" x:Name="eventList" Height="400" Width="300" BorderBrush="Black" BorderThickness="2">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="240" />
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" Grid.Row="0" x:Name="Txt1" Text="Name:" />
+                        <TextBlock Grid.Column="1" Grid.Row="0" Width="20" />
+                        <TextBlock Grid.Column="2" Grid.Row="0" x:Name="Txt2" Text="{Binding Path=Name}" />
+
+                        <TextBlock Grid.Column="0" Grid.Row="1" x:Name="Txt3" Text="Place:" />
+                        <TextBlock Grid.Column="1" Grid.Row="1" Width="20" />
+                        <TextBlock Grid.Column="2" Grid.Row="1" x:Name="Txt4" Text="{Binding Path=Place}" />
+
+                        <TextBlock Grid.Column="0" Grid.Row="2" x:Name="Txt5" Text="Time:" />
+                        <TextBlock Grid.Column="1" Grid.Row="2" Width="20" />
+                        <TextBlock Grid.Column="2" Grid.Row="2" x:Name="Txt6" Text="{Binding Path=DateTime}" />
+
+                        <TextBlock Grid.Column="0" Grid.Row="3" Name="Space" Text="" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+        <AppBarButton x:Name="appBarButton" HorizontalAlignment="Left" Icon="Add" Label="Add Event" VerticalAlignment="Top" Margin="810,704,0,0" Width="62">
 
 
             <Interactivity:Interaction.Behaviors>
@@ -27,6 +63,16 @@
 
 
         </AppBarButton>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="1134,308,0,0" TextWrapping="Wrap" Text="Selected Event Informaton" VerticalAlignment="Top" Height="21" Width="183" />
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="1134,363,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" Width="79"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="1134,388,0,0" TextWrapping="Wrap" Text="Place:" VerticalAlignment="Top" Width="79"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="1134,413,0,0" TextWrapping="Wrap" Text="Dato:" VerticalAlignment="Top" Width="79"/>
+        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="1134,438,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding SelectedEvent.Name}" x:Name="textBlock5" HorizontalAlignment="Left" Margin="1248,367,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <TextBlock Text="{Binding SelectedEvent.Place}" x:Name="textBlock6" HorizontalAlignment="Left" Margin="1248,388,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <TextBlock Text="{Binding SelectedEvent.DateTime}" x:Name="textBlock7" HorizontalAlignment="Left" Margin="1248,408,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <TextBlock Text="{Binding SelectedEvent.Description}" x:Name="textBlock8" HorizontalAlignment="Left" Margin="1248,438,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="302"/>
+        <AppBarButton Command="{Binding DeleteEventCommand}" x:Name="RemoveBtn" HorizontalAlignment="Left" Icon="Delete" Label="Remove Event" Margin="1013,704,0,0" VerticalAlignment="Top" Width="97"/>
 
     </Grid>
 </Page>

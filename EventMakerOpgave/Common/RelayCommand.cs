@@ -33,13 +33,13 @@ namespace EventMakerOpgave.Common
 
         public bool CanExecute(object parameter)
         {
-            if (_canExecute == null)
+            if (this._canExecute == null)
             {
                 return true;
             }
             else
             {
-                return false;
+                return _canExecute();
             }
         }
 

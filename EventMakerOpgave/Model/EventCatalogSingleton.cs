@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EventMakerOpgave.Persistency;
 
 namespace EventMakerOpgave.Model
 {
@@ -24,13 +25,24 @@ namespace EventMakerOpgave.Model
         private EventCatalogSingleton()
         {
             EventCollection = new ObservableCollection<Event>();
-            EventCollection.Add(new Event(1, "Event 1", "Den første event i verdenshistorien", "Ønskeøen", DateTime.Now));
+            LoadJson();
         }
 
         public void AddEvent(Event EventTilAdd)
         {
             EventCollection.Add(EventTilAdd);
+            PersistencyService.SaveEventAsJsonAsync();
         }
 
+        public void RemoveEvent(Event EventTilRemove)
+        {
+            EventCollection.Remove(EventTilRemove);
+            PersistencyService.SaveEventAsJsonAsync();
+        }
+
+        private async void LoadJson()
+        {
+            EventCollection = await PersistencyService.LoadEventsFromJsonAsync();
+        }
     }
 }
