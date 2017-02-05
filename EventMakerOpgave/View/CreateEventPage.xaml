@@ -14,7 +14,7 @@
     </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Command="{Binding CreateEventCommand}" Name="addBtn" HorizontalAlignment="Left" Content="Add" Margin="10,379,0,0" VerticalAlignment="Top" Width="105" />
+        <Button Command="{Binding CreateEventCommand}" Name="addBtn" HorizontalAlignment="Left" Content="Add" Margin="763,544,0,0" VerticalAlignment="Top" Width="105" />
 
         <AppBarButton x:Name="goBack" HorizontalAlignment="Left" Icon="Back" Label="Back" Margin="10,16,0,0" VerticalAlignment="Top">
             <Interactivity:Interaction.Behaviors>
@@ -25,11 +25,11 @@
             </Interactivity:Interaction.Behaviors>
         </AppBarButton>
 
-        <CalendarDatePicker Date="{Binding Date, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,320,0,0" VerticalAlignment="Top"/>
-        <TimePicker Time="{Binding Time, Mode=TwoWay}" HorizontalAlignment="Left" Margin="141,320,0,0" VerticalAlignment="Top" Width="199"/>
-        <TextBox Text="{Binding Name, Mode=TwoWay}" Header="Event name" x:Name="EventNameTxtBox" HorizontalAlignment="Left" Margin="10,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
-        <TextBox Text="{Binding Description, Mode=TwoWay}" Header="Description"  Name="DescriptionTxtBox" HorizontalAlignment="Left" Margin="10,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="373" Height="131"/>
-        <TextBox Text="{Binding Place, Mode=TwoWay}" Header="Place" x:Name="PlaceTxtBox" HorizontalAlignment="Left" Margin="178,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
+        <CalendarDatePicker Date="{Binding Date, Mode=TwoWay}" HorizontalAlignment="Left" Margin="763,485,0,0" VerticalAlignment="Top"/>
+        <TimePicker Time="{Binding Time, Mode=TwoWay}" HorizontalAlignment="Left" Margin="894,485,0,0" VerticalAlignment="Top" Width="199"/>
+        <TextBox Text="{Binding Name, Mode=TwoWay}" Header="Event name" x:Name="EventNameTxtBox" HorizontalAlignment="Left" Margin="763,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
+        <TextBox Text="{Binding Description, Mode=TwoWay}" Header="Description"  Name="DescriptionTxtBox" HorizontalAlignment="Left" Margin="763,337,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="373" Height="131"/>
+        <TextBox Text="{Binding Place, Mode=TwoWay}" Header="Place" x:Name="PlaceTxtBox" HorizontalAlignment="Left" Margin="931,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
 
 
 

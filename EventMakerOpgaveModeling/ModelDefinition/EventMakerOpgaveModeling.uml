@@ -395,6 +395,48 @@
         Id="9c82090b-4a45-40a6-8c05-f57690a4cad5"
         name="ExecutionEvent" />
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="1e6c7ca7-697b-4719-afc9-8f4eaf079b8e"
+        LastKnownName="View"
+        LastKnownLocation="Package_2331.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="b22eaae6-c0ba-46b6-905a-385df17161c5"
+        LastKnownName="Model"
+        LastKnownLocation="Package2_2331.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="88b73630-46f5-46f2-a541-3039dcbe6682"
+        LastKnownName="ViewModel"
+        LastKnownLocation="Package_2333.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="0cd71b84-02ca-4eb7-8ccc-8c2f1a1570da"
+        LastKnownName="Handler"
+        LastKnownLocation="Package_2338.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="ab37c17d-8423-46b6-8e01-552a50e3a2c5"
+        LastKnownName="Converter"
+        LastKnownLocation="Package_2339.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="42ada5d6-f785-41d7-93c2-9007f14d3401"
+        LastKnownName="Persistency"
+        LastKnownLocation="Package_2342.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="35405f68-5f44-4545-9c55-4e63ca89ed1d"
+        LastKnownName="Common"
+        LastKnownLocation="Package_2344.uml" />
+    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"

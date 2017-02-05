@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 using EventMakerOpgave.Model;
 using Windows.Storage;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace EventMakerOpgave.Persistency
 {
     class PersistencyService
     {
 
-        const String fileName = "savedFile.json";
-
-        public static async void SaveEventAsJsonAsync()
+        public static async void SaveEventAsJsonAsync(String fileName, ObservableCollection<Event> save)
         {
+
             StorageFile localFile = await ApplicationData.Current.LocalFolder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
-            string JsonData = JsonConvert.SerializeObject(EventCatalogSingleton.Instance.EventCollection);
+            string JsonData = JsonConvert.SerializeObject(save);
             await FileIO.WriteTextAsync(localFile, JsonData);
 
         }
 
-        public static async Task<ObservableCollection<Event>> LoadEventsFromJsonAsync()
+        public static async Task<ObservableCollection<Event>> LoadEventsFromJsonAsync(String fileName)
         {
             StorageFile localFile = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
             String jsonData = await FileIO.ReadTextAsync(localFile);

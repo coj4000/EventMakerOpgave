@@ -19,6 +19,9 @@ namespace EventMakerOpgave.ViewModel
         //ICommand props
         public ICommand CreateEventCommand { get; set; }
         public ICommand DeleteEventCommand { get; set; }
+        public ICommand DeleteHistorikCommand { get; set; }
+        public ICommand ClearHistorikCommand { get; set; }
+        public ICommand RestoreEventCommand { get; set; }
 
         //Props
         private ObservableCollection<Event> eventCollection;
@@ -27,6 +30,14 @@ namespace EventMakerOpgave.ViewModel
             get { return eventCollection; }
             set { eventCollection = value; }
         }
+
+        private ObservableCollection<Event> historikCollection;
+        public ObservableCollection<Event> HistorikCollection
+        {
+            get { return historikCollection; }
+            set { historikCollection = value; }
+        }
+
 
         private int id;
         public int Id
@@ -79,7 +90,6 @@ namespace EventMakerOpgave.ViewModel
         }
 
         private Event selectedEvent;
-
         public Event SelectedEvent
         {
             get { return selectedEvent; }
@@ -94,6 +104,9 @@ namespace EventMakerOpgave.ViewModel
             EventCollection = new ObservableCollection<Event>();
             EventCollection = EventCatalogSingleton.Instance.EventCollection;
 
+            HistorikCollection = new ObservableCollection<Event>();
+            historikCollection = EventCatalogSingleton.Instance.HistorikCollection;
+
             EventHandler = new Handler.EventHandler(this);
 
             DateTime dt = System.DateTime.Now; 
@@ -102,6 +115,9 @@ namespace EventMakerOpgave.ViewModel
 
             CreateEventCommand = new RelayCommand(EventHandler.CreateEvent, null);
             DeleteEventCommand = new RelayCommand(EventHandler.DeleteEvent, EventHandler.CanDeleteEvent);
+            DeleteHistorikCommand = new RelayCommand(EventHandler.DeleteHistorik, EventHandler.canRemoveHistorik);
+            ClearHistorikCommand = new RelayCommand(EventHandler.ClearHistorik, EventHandler.canRemoveHistorik);
+            RestoreEventCommand = new RelayCommand(EventHandler.RestoreEvent, EventHandler.canRemoveHistorik);
 
         }
 

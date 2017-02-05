@@ -38,5 +38,26 @@ namespace EventMakerOpgave.Handler
             return EventCatalogSingleton.Instance.EventCollection.Count > 0;
         }
 
+        //Historik
+        public void DeleteHistorik()
+        {
+            EventCatalogSingleton.Instance.RemoveFraHistorik(EventViewModel.SelectedEvent);
+        }
+
+        public void ClearHistorik()
+        {
+            EventCatalogSingleton.Instance.ClearHistorik();
+        }
+
+        public void RestoreEvent()
+        {
+            EventCatalogSingleton.Instance.RestoreEvent(EventViewModel.SelectedEvent);
+        }
+
+        public bool canRemoveHistorik()
+        {
+                return EventCatalogSingleton.Instance.HistorikCollection.Count > 0;
+        }
+
     }
 }

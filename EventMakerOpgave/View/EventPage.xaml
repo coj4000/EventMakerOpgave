@@ -73,6 +73,17 @@
         <TextBlock Text="{Binding SelectedEvent.DateTime}" x:Name="textBlock7" HorizontalAlignment="Left" Margin="1248,408,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
         <TextBlock Text="{Binding SelectedEvent.Description}" x:Name="textBlock8" HorizontalAlignment="Left" Margin="1248,438,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="302"/>
         <AppBarButton Command="{Binding DeleteEventCommand}" x:Name="RemoveBtn" HorizontalAlignment="Left" Icon="Delete" Label="Remove Event" Margin="1013,704,0,0" VerticalAlignment="Top" Width="97"/>
+        
+        <AppBarButton x:Name="HistorikAppBar" HorizontalAlignment="Left" Icon="AlignCenter" Label="Historik" Margin="1115,635,0,0" VerticalAlignment="Top">
+
+            <Interactivity:Interaction.Behaviors>
+                <Core:EventTriggerBehavior EventName="Click">
+                    <Core:NavigateToPageAction/>
+                    <Core:NavigateToPageAction TargetPage="EventMakerOpgave.View.HistorikPage"/>
+                </Core:EventTriggerBehavior>
+            </Interactivity:Interaction.Behaviors>
+
+        </AppBarButton>
 
     </Grid>
 </Page>
